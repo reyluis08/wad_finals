@@ -1,0 +1,242 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #1a1a1a;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #00ffcc;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.time-display {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://assets.onecompiler.app/439qgpha6/43fy8666s/image_2025-04-26_194924461.png') no-repeat center center/cover;
+    padding: 80px 20px;
+    min-height: 100vh;
+    color: white;
+}
+
+.hero-content {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* PC Parts Section */
+.pc-parts {
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+}
+
+.pc-parts h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+button {
+    background-color: #00ffcc;
+    color: #1a1a1a;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00e6b8;
+}
+
+.add-to-cart {
+    margin-left: 10px;
+}
+
+/* Shopping Cart */
+.cart-container {
+    max-width: 800px;
+    margin: 2rem auto 4rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.cart-container h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 0.5rem;
+}
+
+#cart-items {
+    margin-bottom: 1.5rem;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item span {
+    font-weight: 500;
+}
+
+.remove-item {
+    background-color: #f44336;
+    font-size: 0.85rem;
+    padding: 0.3rem 0.7rem;
+}
+
+.remove-item:hover {
+    background-color: #d32f2f;
+}
+
+#cart-total {
+    margin: 1.5rem 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+#checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    margin-top: 1rem;
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav-links {
+        margin-top: 1rem;
+        justify-content: center;
+    }
+    
+    .nav-links li {
+        margin: 0 0.75rem;
+    }
+    
+    .time-display {
+        margin-top: 0.5rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    th, td {
+        padding: 0.75rem;
+    }
+    
+    button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Engineering</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/home.css' %}">
+    <iframe src="{% url 'music' %}" allow="autoplay" style="display:none;" id="music-frame"></iframe>
+    <script>
+        // This ensures the iframe loads correctly and music plays
+        window.addEventListener('load', function() {
+            const iframe = document.getElementById('music-frame');
+            
+            // Wait for iframe to load
+            iframe.onload = function() {
+                // Wait a short moment before attempting to play
+                setTimeout(() => {
+                    try {
+                        iframe.contentWindow.postMessage('play', '*');
+                    } catch (error) {
+                        console.error("Failed to communicate with music player:", error);
+                    }
+                }, 1000);
+            };
+
+            // Handle page visibility changes
+            document.addEventListener('visibilitychange', function() {
+                try {
+                    if (document.hidden) {
+                        iframe.contentWindow.postMessage('pause', '*');
+                    } else {
+                        iframe.contentWindow.postMessage('play', '*');
+                    }
+                } catch (error) {
+                    console.error("Failed to communicate with music player:", error);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="welcome.html" class="logo">Itech Vision</a>
+            <div id="current-time" class="time-display"></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="needhelp.html">Need Help?</a></li>
+                <li><a href="cart.html" class="cart-btn"><span id="cart-count">0</span> 🛒</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <script>
+        function updateTime() {
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: true 
+            };
+            const philippinesTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila", ...options });
+            document.getElementById('current-time').innerText = "Current Time in Philippines: " + philippinesTime;
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Computer Engineering World</h1>
+            <p>From Budget Builds to High-End Monsters</p>
+        </div>
+    </section>
+
+    <section class="parts-cards">
+        <h2>Explore PC Parts</h2>
+
+        <div class="cards-container">
+
+            <div class="card" data-name="Intel Core i3-12100F" data-description="Strong entry-level CPU perfect for gaming and everyday tasks." data-price="₱5,643" data-geekbench="Single-core: 1200, Multi-core: 3800">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_001452895.png" alt="Intel Core i3-12100F">
+                <h3>Intel Core i3-12100F</h3>
+                <p>Strong entry-level CPU perfect for gaming and everyday tasks.</p>
+                <span class="price">₱5,643</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+            <div class="card" data-name="NVIDIA GTX 1650" data-description="Compact GPU that delivers smooth 1080p gaming performance." data-price="₱8,493" data-geekbench="Single-core: 2100, Multi-core: 6500">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_001609702.png" alt="NVIDIA GTX 1650">
+                <h3>NVIDIA GTX 1650</h3>
+                <p>Compact GPU that delivers smooth 1080p gaming performance.</p>
+                <span class="price">₱8,493</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+            <div class="card" data-name="16GB DDR4 RAM" data-description="Perfect for multitasking and smooth gaming experiences." data-price="₱2,563" data-geekbench="Single-core: 1000, Multi-core: 2500">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_001725385.png" alt="16GB DDR4 RAM">
+                <h3>16GB DDR4 RAM</h3>
+                <p>Perfect for multitasking and smooth gaming experiences.</p>
+                <span class="price">₱2,563</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+            <div class="card" data-name="AMD Ryzen 5 7600" data-description="A mid-tier powerhouse processor offering superb gaming and multitasking capabilities on the AM5 platform." data-price="₱13,053" data-geekbench="Single-core: 3500, Multi-core: 9500">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_003210150.png" alt="AMD Ryzen 5 7600">
+                <h3>AMD Ryzen 5 7600</h3>
+                <p>A mid-tier powerhouse processor offering superb gaming and multitasking capabilities on the AM5 platform.</p>
+                <span class="price">₱13,053</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+            <div class="card" data-name="RTX 4060 Ti" data-description="A next-gen GPU for ultra-smooth 1440p gaming, content creation, and AI-accelerated workloads." data-price="₱22,743" data-geekbench="Single-core: 2500, Multi-core: 7500">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_003252600.png" alt="RTX 4060 Ti">
+                <h3>RTX 4060 Ti</h3>
+                <p>A next-gen GPU for ultra-smooth 1440p gaming, content creation, and AI-accelerated workloads.</p>
+                <span class="price">₱22,743</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+            <div class="card" data-name="32GB DDR5 RAM" data-description="Future-proof RAM with blazing speeds, boosting system responsiveness and efficiency for heavy multitasking." data-price="₱8,493" data-geekbench="Single-core: 2100, Multi-core: 6500">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_003525376.png" alt="32GB DDR5 RAM">
+                <h3>32GB DDR5 RAM</h3>
+                <p>Future-proof RAM with blazing speeds, boosting system responsiveness and efficiency for heavy multitasking.</p>
+                <span class="price">₱8,493</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+            <div class="card" data-name="Intel Core i9-14900K" data-description="The most powerful consumer graphics card ever, delivering unrivaled performance for gaming and professional workloads." data-price="₱34,143" data-geekbench="Single-core: 4500, Multi-core: 12500">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_003732304.png" alt="Intel Core i9-14900K">
+                <h3>Intel Core i9-14900K</h3>
+                <p>The most powerful consumer graphics card ever, delivering unrivaled performance for gaming and professional workloads.</p>
+                <span class="price">₱34,143</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+            <div class="card" data-name="NVIDIA RTX 4090" data-description="Perfect for multitasking and smooth gaming experiences." data-price="₱96,843" data-geekbench="Single-core: 3000, Multi-core: 8000">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_003853369.png" alt="NVIDIA RTX 4090">
+                <h3>NVIDIA RTX 4090</h3>
+                <p>Perfect for multitasking and smooth gaming experiences.</p>
+                <span class="price">₱96,843</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+            <div class="card" data-name="64GB DDR5 RAM" data-description="Insane memory capacity and speed for professionals handling massive datasets, 3D modeling, and video editing." data-price="₱17,043" data-geekbench="Single-core: 3500, Multi-core: 9500">
+                <img src="https://assets.onecompiler.app/439qgpha6/43fyse8e5/image_2025-04-27_003949405.png" alt="64GB DDR5 RAM">
+                <h3>64GB DDR5 RAM</h3>
+                <p>Insane memory capacity and speed for professionals handling massive datasets, 3D modeling, and video editing.</p>
+                <span class="price">₱17,043</span>
+                <button onclick="showPopup(this)">Select</button>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="popup-close" class="popup-close">&times;</span>
+            <h3 id="popup-name"></h3>
+            <p id="popup-description"></p>
+            <p><strong>Price:</strong> <span id="popup-price"></span></p>
+            <p><strong>Geekbench Scores:</strong> <span id="popup-geekbench"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(button) {
+    const card = button.closest('.card');
+    const name = card.getAttribute('data-name');
+    const description = card.getAttribute('data-description');
+    const price = card.getAttribute('data-price');
+    const geekbench = card.getAttribute('data-geekbench');
+
+    document.getElementById('popup-name').textContent = name;
+    document.getElementById('popup-description').textContent = description;
+    document.getElementById('popup-price').textContent = price;
+    document.getElementById('popup-geekbench').textContent = geekbench;
+
+    document.getElementById('popup').style.display = 'flex';
+}
+
+document.getElementById('popup-close').addEventListener('click', () => {
+    document.getElementById('popup').style.display = 'none';
+});
+
+// Initialize cart count from localStorage
+document.addEventListener('DOMContentLoaded', function() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById('cart-count').textContent = cart.length;
+});
+    </script>
+</body>
+</html>

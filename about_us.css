@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1a1a1a;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #00ffcc;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    background: url('https://assets.onecompiler.app/439qgpha6/43fy8666s/image_2025-04-26_194924461.png') no-repeat center center/cover;
+    padding: 80px 20px;
+    min-height: 100vh;
+    color: white;
+}
+
+.hero-content {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.5); /* slight dark overlay so text is readable */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.info-block {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.info-text h1, 
+.info-text h4 {
+    margin: 5px 0;
+}
+
+.socials a img {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.time-display {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}

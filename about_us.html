@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Engineering</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/about_us.css' %}">
+    <iframe src="music.html" allow="autoplay" style="display:none;"></iframe>
+</head>
+<body>    
+    <header>
+        <nav>
+            <a href="welcome.html" class="logo">Itech Vision</a>
+            <div id="current-time" class="time-display"></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="needhelp.html">Need Help?</a></li>
+                <li><a href="cart.html" class="cart-btn"><span id="cart-count">0</span> 🛒</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        function updateTime() {
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: true 
+            };
+            const philippinesTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila", ...options });
+            document.getElementById('current-time').innerText = "Current Time in Philippines: " + philippinesTime;
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
+
+    <section class="hero"> 
+        <h1 style="text-align: center;">HI WE ARE THE "ITECH COORPORATION" TEAM!</h1>
+        <div class="hero-content">
+            <div class="info-container">
+                
+                <div class="info-block">
+                    <img src="{% static 'core/images/Hirotaka Saito.png' %}" alt="Hirotaka Saito" width="200">
+                    <div class="info-text">
+                        <h4>Hello, I'm</h4>
+                        <h1>Hirotaka Saito</h1>
+                        <h4>Software Developer & AI Enthusiast</h4>
+                        <h4>2nd-year BS Computer Engineering student</h4>
+                        <h4>hirotakasaito@gmail.com</h4>
+                        <h4>(0947)3647582</h4>
+                        <div class="socials">
+                            <a href="https://www.facebook.com/SAITO.HIROO"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+                            <a href="https://www.instagram.com/takasaiiii/"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+    <br>
+                <div class="info-block">
+                    <img src="{% static 'core/images/Kurth Justine.png' %}" alt="Kurth Justine Anonical" width="200">
+                    <div class="info-text">
+                        <h4>Hello, I'm</h4>
+                        <h1>Kurth Justine Anonical</h1>
+                        <h4>Cybersecurity Specialist</h4>
+                        <h4>2nd-year BS Computer Engineering student</h4>
+                        <h4>Kurthanonical@gmail.com</h4>
+                        <h4>(0973)6647321</h4>
+                        <div class="socials">
+                            <a href="https://www.facebook.com/kurth.justine435"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+                            <a href="https://www.instagram.com/kayjeyaey/"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+    
+    <br>
+                <div class="info-block">
+                    <img src="{% static 'core/images/Marcus Damian.png' %}" alt="Marcus Damian" width="200">
+                    <div class="info-text">
+                        <h4>Hello, I'm</h4>
+                        <h1>Marcus Damian</h1>
+                        <h4>Cybersecurity Specialist</h4>
+                        <h4>2nd-year BS Computer Engineering student</h4>
+                        <h4>Marcusdamian@gmail.com</h4>
+                        <h4>(0914)3546534</h4>
+                        <div class="socials">
+                            <a href="https://www.facebook.com/Mjdamian.akashinto24"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+                            <a href="https://www.instagram.com/mrcsdmn/"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+
+    <br>
+                <div class="info-block">
+                    <img src="{% static 'core/images/Shin Francisco.png' %}" alt="Shin Francisco" width="200">
+                    <div class="info-text">
+                        <h4>Hello, I'm</h4>
+                        <h1>Shin Francisco</h1>
+                        <h4>Cybersecurity Specialist</h4>
+                        <h4>2nd-year BS Computer Engineering student</h4>
+                        <h4>Shinfrancisco@gmail.com</h4>
+                        <h4>(0957)6845621</h4>
+                        <div class="socials">
+                            <a href="https://www.facebook.com/shin.francisco.607328"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+                            <a href="https://www.instagram.com/shiitsaw/"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+
+    <br>
+                <div class="info-block">
+                    <img src="{% static 'core/images/Rey Luis.png' %}" alt="Reyluis Pinto" width="200">
+                    <div class="info-text">
+                        <h4>Hello, I'm</h4>
+                        <h1>Reyluis Pinto</h1>
+                        <h4>Cybersecurity Specialist</h4>
+                        <h4>2nd-year BS Computer Engineering student</h4>
+                        <h4>Reyluispinto@gmail.com</h4>
+                        <h4>(0975)8395732</h4>
+                        <div class="socials">
+                            <a href="https://www.facebook.com/reyluis.pinto.5"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+                            <a href="https://www.instagram.com/rylsmpnt/"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+
+    <br>
+                <div class="info-block">
+                    <img src="{% static 'core/images/Paul Sebastian.png' %}" alt="Paul Sebastien" width="200">
+                    <div class="info-text">
+                        <h4>Hello, I'm</h4>
+                        <h1>Paul Sebastien</h1>
+                        <h4>Cybersecurity Specialist</h4>
+                        <h4>2nd-year BS Computer Engineering student</h4>
+                        <h4>paulsebastien@gmail.com</h4>
+                        <h4>(0953)7475843</h4>
+                        <div class="socials">
+                            <a href="https://www.facebook.com/paulsebastien.adducol"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+                            <a href="https://www.instagram.com/notbastiii/"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram.png" alt="Instagram"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Music</title>
+    {% load static %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+        }
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+        }
+        button:hover {
+            color: #00ffcc;
+        }
+        input[type="range"] {
+            width: 100px;
+        }
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="music-player">
+        <div class="music-controls">
+            <button id="playPauseBtn" title="Play/Pause">▶</button>
+            <div class="volume-control">
+                <span>🔊</span>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.3" title="Volume Control">
+            </div>
+        </div>
+        <div id="errorMessage" class="error-message"></div>
+    </div>
+
+    <audio id="background-music" preload="auto" loop>
+        <source src="{% static 'core/audio/Background-music.mp3' %}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const audio = document.getElementById('background-music');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Initialize volume
+        audio.volume = volumeSlider.value;
+
+        // Function to show error message
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        // Function to handle audio play
+        async function playAudio() {
+            try {
+                await audio.play();
+                playPauseBtn.textContent = '⏸';
+                errorMessage.style.display = 'none';
+            } catch (error) {
+                console.error("Audio play failed:", error);
+                showError("Click the play button to start music");
+                playPauseBtn.textContent = '▶';
+            }
+        }
+
+        // Play/pause functionality
+        playPauseBtn.addEventListener('click', async () => {
+            if (audio.paused) {
+                await playAudio();
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = '▶';
+            }
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+
+        // Try to autoplay when page loads
+        window.addEventListener('load', async () => {
+            try {
+                // First try to play with user interaction
+                await playAudio();
+            } catch (error) {
+                console.log("Autoplay failed, waiting for user interaction");
+                showError("Click the play button to start music");
+            }
+        });
+
+        // Listen for messages from parent page
+        window.addEventListener('message', async function(event) {
+            if (event.data === 'play') {
+                await playAudio();
+            } else if (event.data === 'pause') {
+                audio.pause();
+                playPauseBtn.textContent = '▶';
+            }
+        });
+
+        // Handle audio errors
+        audio.addEventListener('error', (e) => {
+            console.error("Audio error:", e);
+            showError("Error loading audio file");
+        });
+
+        // Add click event listener to the document to enable audio
+        document.addEventListener('click', async () => {
+            try {
+                await playAudio();
+            } catch (error) {
+                console.error("Failed to play audio:", error);
+            }
+        }, { once: true }); // Only trigger once
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    background-color: white;
+    line-height: 1.6;
+}
+
+.welcome-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.company-tagline {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.company-name {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.start-journey {
+    color: purple;
+    text-decoration: underline;
+    font-size: 18px;
+    display: inline-block;
+} 

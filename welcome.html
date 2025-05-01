@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Engineering</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/welcome.css' %}">
+    <iframe src="{% url 'music' %}" allow="autoplay" style="display:none;" id="music-frame"></iframe>
+    <script>
+        // This ensures the iframe loads correctly and music plays
+        window.addEventListener('load', function() {
+            const iframe = document.getElementById('music-frame');
+            
+            // Wait for iframe to load
+            iframe.onload = function() {
+                // Wait a short moment before attempting to play
+                setTimeout(() => {
+                    try {
+                        iframe.contentWindow.postMessage('play', '*');
+                    } catch (error) {
+                        console.error("Failed to communicate with music player:", error);
+                    }
+                }, 1000);
+            };
+
+            // Handle page visibility changes
+            document.addEventListener('visibilitychange', function() {
+                try {
+                    if (document.hidden) {
+                        iframe.contentWindow.postMessage('pause', '*');
+                    } else {
+                        iframe.contentWindow.postMessage('play', '*');
+                    }
+                } catch (error) {
+                    console.error("Failed to communicate with music player:", error);
+                }
+            });
+
+            // Add click event listener to the document to enable audio
+            document.addEventListener('click', function() {
+                try {
+                    iframe.contentWindow.postMessage('play', '*');
+                } catch (error) {
+                    console.error("Failed to communicate with music player:", error);
+                }
+            }, { once: true }); // Only trigger once
+        });
+    </script>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h4>BUILD THE FUTURE WITH</h4>
+            <h1>ITECH COORPORATION!</h1>
+            <div class="socials">
+                <a href="home.html" class="start-btn">Start Your Journey</a>
+            </div>
+            <div id="current-time" class="time-display"></div>
+        </div>
+    </section>
+</body>
+</html>

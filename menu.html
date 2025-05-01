@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Engineering</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/menu.css' %}">
+    <iframe src="music.html" allow="autoplay" style="display:none;" id="music-frame"></iframe>
+    <script>
+        // This ensures the iframe loads correctly and music plays
+        window.onload = function() {
+            const iframe = document.getElementById('music-frame');
+            iframe.onload = function() {
+                // Attempt to interact with the iframe to enable autoplay
+                iframe.contentWindow.postMessage('play', '*');
+            };
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="welcome.html" class="logo">Itech Vision</a>
+            <div id="current-time" class="time-display"></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="needhelp.html">Need Help?</a></li>
+                <li><a href="cart.html" class="cart-btn"><span id="cart-count">0</span> 🛒</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        function updateTime() {
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit', 
+                hour12: true 
+            };
+            const philippinesTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila", ...options });
+            document.getElementById('current-time').innerText = "Current Time in Philippines: " + philippinesTime;
+        }
+
+        setInterval(updateTime, 1000);
+    </script>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Computer Engineering World</h1>
+            <p>From Budget Builds to High-End Monsters</p>
+        </div>
+    </section>
+
+    <section class="pc-parts">
+        <h2>Low-End Build</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CPU</td>
+                    <td>Intel Core i3-12100F</td>
+                    <td>₱5,643</td>
+                    <td><button class="buy-btn" data-item="Intel Core i3-12100F" data-price="5643">Buy</button> <button class="add-to-cart" data-item="Intel Core i3-12100F" data-price="5643">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>GPU</td>
+                    <td>NVIDIA GTX 1650</td>
+                    <td>₱8,493</td>
+                    <td><button class="buy-btn" data-item="NVIDIA GTX 1650" data-price="8493">Buy</button> <button class="add-to-cart" data-item="NVIDIA GTX 1650" data-price="8493">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>RAM</td>
+                    <td>16GB DDR4</td>
+                    <td>₱2,563</td>
+                    <td><button class="buy-btn" data-item="16GB DDR4" data-price="2563">Buy</button> <button class="add-to-cart" data-item="16GB DDR4" data-price="2563">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Mid-End Build</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CPU</td>
+                    <td>AMD Ryzen 5 7600</td>
+                    <td>₱13,053</td>
+                    <td><button class="buy-btn" data-item="AMD Ryzen 5 7600" data-price="13053">Buy</button> <button class="add-to-cart" data-item="AMD Ryzen 5 7600" data-price="13053">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>GPU</td>
+                    <td>RTX 4060 Ti</td>
+                    <td>₱22,743</td>
+                    <td><button class="buy-btn" data-item="RTX 4060 Ti" data-price="22743">Buy</button> <button class="add-to-cart" data-item="RTX 4060 Ti" data-price="22743">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>RAM</td>
+                    <td>32GB DDR5</td>
+                    <td>₱8,493</td>
+                    <td><button class="buy-btn" data-item="32GB DDR5" data-price="8493">Buy</button> <button class="add-to-cart" data-item="32GB DDR5" data-price="8493">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>High-End Build</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CPU</td>
+                    <td>Intel Core i9-14900K</td>
+                    <td>₱34,143</td>
+                    <td><button class="buy-btn" data-item="Intel Core i9-14900K" data-price="34143">Buy</button> <button class="add-to-cart" data-item="Intel Core i9-14900K" data-price="34143">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>GPU</td>
+                    <td>NVIDIA RTX 4090</td>
+                    <td>₱96,843</td>
+                    <td><button class="buy-btn" data-item="NVIDIA RTX 4090" data-price="96843">Buy</button> <button class="add-to-cart" data-item="NVIDIA RTX 4090" data-price="96843">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td>RAM</td>
+                    <td>64GB DDR5</td>
+                    <td>₱17,043</td>
+                    <td><button class="buy-btn" data-item="64GB DDR5" data-price="17043">Buy</button> <button class="add-to-cart" data-item="64GB DDR5" data-price="17043">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Itech Vision</p>
+    </footer>
+
+    <script>
+        // Local Storage functionality for cart
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = cart.length;
+            document.getElementById('cart-count').innerText = cartCount;
+        }
+
+        function addToCart(item, price) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const newItem = { item, price };
+            cart.push(newItem);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+
+            // Popup notification
+            alert(`${item} has been added to your cart!`);
+        }
+
+        // Add event listeners to all "Add to Cart" and "Buy" buttons
+        document.querySelectorAll('.add-to-cart, .buy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const item = this.getAttribute('data-item');
+                const price = this.getAttribute('data-price');
+                addToCart(item, price);
+            });
+        });
+
+        // Initialize the cart count on page load
+        updateCartCount();
+    </script>
+</body>
+</html>
